@@ -28,7 +28,7 @@
   const HOURS = { 1: [9, 17], 2: [9, 17], 3: [9, 17], 4: [9, 17], 5: [9, 17], 6: [8, 11], 0: null };
   const DAYS = ['Neděle', 'Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota'];
   const SHOP_PHONE = ['+420792370292', '792 370 292'];
-  const VERSION = '4';
+  const VERSION = '5';
 
   const CATS = {
     kava: {

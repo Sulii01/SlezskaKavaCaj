@@ -769,3 +769,7 @@ a.usp:hover { background: var(--paper); }
 .hero__hours-week b { color: #fff; font-weight: 600; }
 .topbar .open-dot { width: 7px; height: 7px; box-shadow: none; margin-right: 6px; }
 @media (max-width: 560px) { .hero__hours { display: flex; padding: 14px; gap: 12px; } .hero__hours-ic { width: 40px; height: 40px; } .hero__hours-status { font-size: 16px; } }
+
+/* Lišta „Ukázka návrhu“ – odstranit při ostrém spuštění */
+.demo-bar { background: var(--caramel); color: #1a120c; font-size: 13px; line-height: 1.4; text-align: center; padding: 8px 0; }
+.demo-bar a { text-decoration: underline; font-weight: 600; }
