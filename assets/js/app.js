@@ -28,7 +28,7 @@
   const HOURS = { 1: [9, 17], 2: [9, 17], 3: [9, 17], 4: [9, 17], 5: [9, 17], 6: [8, 11], 0: null };
   const DAYS = ['Neděle', 'Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota'];
   const SHOP_PHONE = ['+420792370292', '792 370 292'];
-  const VERSION = '3';
+  const VERSION = '4';
 
   const CATS = {
     kava: {
@@ -359,6 +359,12 @@
             <a class="btn btn--caramel" href="#/kava">Vybrat kávu ${ICON.arrow}</a>
             <a class="btn btn--ghost" href="#/caj">Objevit čaje</a>
           </div>
+          <a class="hero__hours" href="#/vydejni-misto">
+            <span class="hero__hours-ic">${ICON.clock}</span>
+            <span><small>Prodejna a výdejní místo Zásilkovny a PPL · Bystřice 5</small>
+            <span class="hero__hours-status" data-open-status>${openStatus()}</span>
+            <span class="hero__hours-week">Po–Pá <b>9:00–17:00</b> · So <b>8:00–11:00</b> · Ne zavřeno</span></span>
+          </a>
         </div>
       </div>
       <div class="hero__stats"><div class="wrap"><div class="stats">
@@ -1113,6 +1119,13 @@
 
   /* ------------------------------------------------------------------ Start */
   $('#year').textContent = new Date().getFullYear();
+  // stav prodejny v horní liště a na úvodní stránce, obnovuje se každou minutu
+  const tickStatus = () => {
+    $('#topbarStatus').innerHTML = `Prodejna: ${openStatus().replace(/<\/?b>/g, '')}`;
+    $$('[data-open-status]').forEach((el) => { el.innerHTML = openStatus(); });
+  };
+  tickStatus();
+  setInterval(tickStatus, 60000);
   Promise.all([
     fetch(`data/products.json?v=${VERSION}`).then((r) => r.json()),
     fetch(`data/pages.json?v=${VERSION}`).then((r) => r.json()),
