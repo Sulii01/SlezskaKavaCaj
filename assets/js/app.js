@@ -24,6 +24,12 @@
     ],
   };
 
+  // Otevírací doba prodejny a výdejního místa (0 = neděle)
+  const HOURS = { 1: [9, 17], 2: [9, 17], 3: [9, 17], 4: [9, 17], 5: [9, 17], 6: [8, 11], 0: null };
+  const DAYS = ['Neděle', 'Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota'];
+  const SHOP_PHONE = ['+420792370292', '792 370 292'];
+  const VERSION = '3';
+
   const CATS = {
     kava: {
       title: 'Káva', lead: 'Čerstvě pražená káva z celého světa – jednodruhové arabiky, vzácné kávy, espresso směsi i ochucené kávy. Namelem vám ji přesně pro váš způsob přípravy.',
@@ -871,7 +877,9 @@
     <header class="phead"><div class="wrap">${crumbs([[null, 'Kontakty']])}<h1>Kontakty</h1><p>Máte nějaké otázky? Zodpovíme je. Prosíme o pečlivé vyplnění kontaktních údajů.</p></div></header>
     <div class="wrap contact">
       <div class="ccards">
-        <a class="ccard" href="tel:+420608805491"><span class="ccard__ic">${ICON.phone}</span><div><small>Telefon</small><b>+420 608 805 491</b></div></a>
+        <a class="ccard" href="tel:+420608805491"><span class="ccard__ic">${ICON.phone}</span><div><small>Telefon – e-shop</small><b>+420 608 805 491</b></div></a>
+        <a class="ccard" href="tel:${SHOP_PHONE[0]}"><span class="ccard__ic">${ICON.phone}</span><div><small>Telefon – prodejna</small><b>${SHOP_PHONE[1]}</b></div></a>
+        ${hoursCard()}
         <a class="ccard" href="mailto:info@slezskakava.cz"><span class="ccard__ic">${ICON.mail}</span><div><small>E-mail</small><b>info@slezskakava.cz</b></div></a>
         <div class="ccard"><span class="ccard__ic">${ICON.pin}</span><div><small>Provozovna · osobní odběr</small><b>Bystřice 5, 739 95</b></div></div>
         <a class="ccard" href="#/vydejni-misto"><span class="ccard__ic">${ICON.box}</span><div><small>Výdejní místo</small><b>Zásilkovna a PPL</b><p>Na provozovně si vyzvednete zásilky z jakéhokoli e-shopu.</p></div></a>
@@ -894,6 +902,33 @@
   /* ---------- Výdejní místo Zásilkovny a PPL ---------- */
   const MAP = '<div class="map"><iframe title="Mapa – Bystřice 5" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Byst%C5%99ice%205%2C%20739%2095&output=embed"></iframe></div>';
 
+  function pragueNow() {
+    const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Prague', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' })
+      .formatToParts(new Date()).map((x) => [x.type, x.value]));
+    return { day: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(parts.weekday), h: +parts.hour + +parts.minute / 60 };
+  }
+
+  function openStatus() {
+    const { day, h } = pragueNow();
+    const today = HOURS[day];
+    if (today && h >= today[0] && h < today[1]) return `<span class="open-dot"></span><b>Právě otevřeno</b> · dnes do ${today[1]}:00`;
+    if (today && h < today[0]) return `<span class="open-dot open-dot--off"></span><b>Zavřeno</b> · dnes otevíráme v ${today[0]}:00`;
+    for (let i = 1; i <= 7; i++) {
+      const d = (day + i) % 7;
+      if (HOURS[d]) return `<span class="open-dot open-dot--off"></span><b>Zavřeno</b> · otevíráme ${i === 1 ? 'zítra' : `${DAYS[d].toLowerCase()}`} v ${HOURS[d][0]}:00`;
+    }
+    return '';
+  }
+
+  function hoursCard() {
+    const { day } = pragueNow();
+    const order = [1, 2, 3, 4, 5, 6, 0];
+    return `<div class="ccard"><span class="ccard__ic">${ICON.clock}</span><div style="flex:1"><small>Otevírací doba prodejny a výdejního místa</small>
+      <p class="hours-status">${openStatus()}</p>
+      <dl class="hours">${order.map((d) => `<div class="${d === day ? 'is-today' : ''}"><dt>${DAYS[d]}</dt><dd>${HOURS[d] ? `${HOURS[d][0]}:00–${HOURS[d][1]}:00` : 'Zavřeno'}</dd></div>`).join('')}</dl>
+    </div></div>`;
+  }
+
   function pickupSection() {
     return `<section class="section" style="padding-top:0">
       <div class="wrap">
@@ -903,6 +938,7 @@
             <h2>Vyzvedněte si u nás zásilky <em>Zásilkovny i PPL</em></h2>
             <p>Na naší provozovně v Bystřici 5 je výdejní místo Zásilkovny a PPL. Vyzvednout si tu můžete balíky z jakéhokoli e-shopu – a když už tu budete, přivoňte k čerstvé kávě.</p>
             <div class="pickup__carriers"><span>${ICON.box} Zásilkovna</span><span>${ICON.box} PPL Parcelshop</span></div>
+            <p class="pickup__hours">${openStatus()}<br>Po–Pá 9:00–17:00 · So 8:00–11:00 · Ne zavřeno</p>
             <a class="btn btn--caramel" href="#/vydejni-misto">Jak to funguje ${ICON.arrow}</a>
           </div>
           <ol class="pickup__steps">
@@ -945,8 +981,8 @@
       <div class="pickup-info">
         <div class="ccards">
           <div class="ccard"><span class="ccard__ic">${ICON.pin}</span><div><small>Adresa výdejního místa</small><b>Bystřice 5, 739 95 Bystřice</b><p>Provozovna Slezská káva a čaj</p></div></div>
-          <div class="ccard"><span class="ccard__ic">${ICON.clock}</span><div><small>Otevírací doba</small><b>Podle aplikace dopravce</b><p>Aktuální otevírací dobu výdejního místa najdete v aplikaci nebo na webu Zásilkovny a PPL.</p></div></div>
-          <a class="ccard" href="tel:+420608805491"><span class="ccard__ic">${ICON.phone}</span><div><small>Dotazy</small><b>+420 608 805 491</b></div></a>
+          ${hoursCard()}
+          <a class="ccard" href="tel:${SHOP_PHONE[0]}"><span class="ccard__ic">${ICON.phone}</span><div><small>Telefon na prodejnu</small><b>${SHOP_PHONE[1]}</b></div></a>
         </div>
         ${MAP}
       </div>
@@ -1078,8 +1114,8 @@
   /* ------------------------------------------------------------------ Start */
   $('#year').textContent = new Date().getFullYear();
   Promise.all([
-    fetch('data/products.json').then((r) => r.json()),
-    fetch('data/pages.json').then((r) => r.json()),
+    fetch(`data/products.json?v=${VERSION}`).then((r) => r.json()),
+    fetch(`data/pages.json?v=${VERSION}`).then((r) => r.json()),
   ]).then(([products, pages]) => {
     PRODUCTS = products.map((p) => ({ ...p, weights: Object.keys(p.prices) }));
     PAGES = pages;

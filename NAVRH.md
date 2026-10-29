@@ -34,7 +34,7 @@ Provozovna v Bystřici 5 je výdejní místo Zásilkovny a PPL. Na webu je to te
 - sekce na úvodní stránce, odkaz v horní liště, v menu, v patičce a na stránce Kontakty,
 - zmínka u každého produktu a u osobního odběru v pokladně.
 
-U otevírací doby web zatím odkazuje na aplikace dopravců. Pošlete mi skutečné hodiny a doplním je. Ve variantě A se to v Shoptetu udělá jako obsahová stránka v menu a banner na úvodní stránce.
+Otevírací doba (Po–Pá 9–17, So 8–11, Ne zavřeno) a telefon na prodejnu (792 370 292) jsou doplněné a web podle českého času ukazuje „Právě otevřeno / Zavřeno“. Otevírací doba se mění v objektu `HOURS` v `assets/js/app.js`. Ve variantě A se to v Shoptetu udělá jako obsahová stránka v menu a banner na úvodní stránce.
 
 ---
 
