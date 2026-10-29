@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slezská káva a čaj – čerstvě pražená káva a výběrové čaje</title>
+  <meta name="description" content="Čerstvě pražená káva z celého světa, výběrové a ochucené kávy, espresso směsi a sypané čaje. Mletí na míru, osobní odběr v Bystřici, doručení po ČR a SK.">
+  <meta name="theme-color" content="#18110d">
+  <meta property="og:title" content="Slezská káva a čaj">
+  <meta property="og:description" content="Čerstvě pražená káva z celého světa a výběrové čaje.">
+  <meta property="og:image" content="assets/img/brand/arabica-1.webp">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/brand/arabica-1.webp">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Přejít na obsah</a>
+
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <span>☕ Čerstvě pražená káva z celého světa</span>
+      <span class="topbar__hide">Mletí na míru · Doručení po ČR a SK</span>
+      <span class="topbar__hide-sm">Osobní odběr v Bystřici</span>
+    </div>
+  </div>
+
+  <header class="header" id="header">
+    <div class="wrap header__inner">
+      <button class="icon-btn header__burger" id="menuOpen" aria-label="Otevřít menu">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <a href="#/" class="logo" aria-label="Slezská káva a čaj – domů">
+        <img src="assets/img/brand/logo.png" alt="Slezská káva" width="165" height="50">
+      </a>
+      <nav class="nav" aria-label="Hlavní navigace">
+        <div class="nav__item nav__item--mega">
+          <a href="#/kava" class="nav__link" data-nav="kava">Káva</a>
+          <div class="mega">
+            <div class="mega__cols">
+              <div>
+                <p class="mega__title">Podle druhu</p>
+                <a href="#/kava/top-arabica">Top arabica <small>vzácné kávy</small></a>
+                <a href="#/kava/arabica">100% Arabica <small>jednodruhové</small></a>
+                <a href="#/kava/espresso">Směsi espresso</a>
+                <a href="#/kava/ochucena">Ochucená káva</a>
+                <a href="#/kava/bez-kofeinu">Káva bez kofeinu</a>
+                <a href="#/kava/darky">Dárky &amp; akce</a>
+              </div>
+              <div>
+                <p class="mega__title">Podle původu</p>
+                <a href="#/kava/arabica?puvod=afrika">Afrika</a>
+                <a href="#/kava/arabica?puvod=asie">Asie</a>
+                <a href="#/kava/arabica?puvod=stredni-amerika">Střední Amerika</a>
+                <a href="#/kava/arabica?puvod=jizni-amerika">Jižní Amerika</a>
+              </div>
+              <a class="mega__promo" href="#/produkt/kopi-luwak-sumatra-kava">
+                <img src="assets/img/products/thumb/1008-1-kopi-luwak-1.webp" alt="" loading="lazy">
+                <span><em>Rarita</em>Kopi Luwak – Sumatra</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="#/caj" class="nav__link" data-nav="caj">Čaj</a>
+        <a href="#/kava/darky" class="nav__link" data-nav="akce">Akce</a>
+        <a href="#/blog" class="nav__link" data-nav="blog">Blog o kávě</a>
+        <a href="#/o-nas" class="nav__link" data-nav="o-nas">O nás</a>
+        <a href="#/kontakt" class="nav__link" data-nav="kontakt">Kontakt</a>
+      </nav>
+      <div class="header__actions">
+        <button class="icon-btn" id="searchOpen" aria-label="Hledat">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <button class="icon-btn cart-btn" id="cartOpen" aria-label="Košík">
+          <svg viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <span class="cart-btn__count" id="cartCount" hidden>0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1"></main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__news">
+        <div>
+          <p class="eyebrow eyebrow--light">Newsletter</p>
+          <h2>Nezmeškejte žádné novinky či slevy</h2>
+        </div>
+        <form class="news-form" data-demo-form="Děkujeme, jste přihlášeni k odběru novinek.">
+          <label class="sr-only" for="newsEmail">E-mail</label>
+          <input id="newsEmail" type="email" required placeholder="váš@email.cz">
+          <button class="btn btn--caramel" type="submit">Přihlásit se</button>
+        </form>
+      </div>
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/img/brand/logo.png" alt="Slezská káva" class="footer__logo" width="165" height="50">
+          <p>Káva, její vůně, její příprava i celá její kultura – to je jedno velké kouzlo. S výběrem rádi poradíme.</p>
+        </div>
+        <div>
+          <p class="footer__title">Obchod</p>
+          <a href="#/kava">Káva</a>
+          <a href="#/kava/top-arabica">Top arabica</a>
+          <a href="#/kava/ochucena">Ochucená káva</a>
+          <a href="#/caj">Čaj</a>
+          <a href="#/kava/darky">Dárkový kupon</a>
+        </div>
+        <div>
+          <p class="footer__title">Informace</p>
+          <a href="#/jak-nakupovat">Jak nakupovat</a>
+          <a href="#/obchodni-podminky">Obchodní podmínky</a>
+          <a href="#/ochrana-udaju">Ochrana osobních údajů</a>
+          <a href="#/blog">Blog o kávě</a>
+          <a href="#/o-nas">O nás</a>
+        </div>
+        <div>
+          <p class="footer__title">Kontakt</p>
+          <a href="tel:+420608805491">+420 608 805 491</a>
+          <a href="mailto:info@slezskakava.cz">info@slezskakava.cz</a>
+          <p>Provozovna: Bystřice 5<br>739 95 Bystřice</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year"></span> Slezská káva a čaj · Jana Lancová, IČO 64147746</span>
+        <span class="footer__pay">Převodem · Kartou · Dobírkou · Hotově</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobilní menu -->
+  <div class="drawer drawer--left" id="menu" aria-hidden="true">
+    <div class="drawer__panel" role="dialog" aria-label="Menu">
+      <div class="drawer__head">
+        <img src="assets/img/brand/logo.png" alt="Slezská káva" height="40">
+        <button class="icon-btn" data-close aria-label="Zavřít"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <nav class="mnav">
+        <a href="#/kava">Veškerá káva</a>
+        <a href="#/kava/top-arabica" class="mnav__sub">Top arabica</a>
+        <a href="#/kava/arabica" class="mnav__sub">100% Arabica</a>
+        <a href="#/kava/espresso" class="mnav__sub">Směsi espresso</a>
+        <a href="#/kava/ochucena" class="mnav__sub">Ochucená káva</a>
+        <a href="#/kava/bez-kofeinu" class="mnav__sub">Bez kofeinu</a>
+        <a href="#/caj">Čaj</a>
+        <a href="#/kava/darky">Akce &amp; dárky</a>
+        <a href="#/blog">Blog o kávě</a>
+        <a href="#/o-nas">O nás</a>
+        <a href="#/kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Košík -->
+  <div class="drawer" id="cart" aria-hidden="true">
+    <div class="drawer__panel" role="dialog" aria-label="Košík">
+      <div class="drawer__head">
+        <h2 class="drawer__title">Košík</h2>
+        <button class="icon-btn" data-close aria-label="Zavřít"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="drawer__body" id="cartBody"></div>
+      <div class="drawer__foot" id="cartFoot"></div>
+    </div>
+  </div>
+
+  <!-- Vyhledávání -->
+  <div class="search" id="search" aria-hidden="true">
+    <div class="search__panel" role="dialog" aria-label="Vyhledávání">
+      <div class="wrap">
+        <div class="search__bar">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" id="searchInput" placeholder="Co potřebujete najít? Např. Etiopie, karamel, zelený čaj…" autocomplete="off">
+          <button class="icon-btn" data-close aria-label="Zavřít"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        </div>
+        <div class="search__results" id="searchResults"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
