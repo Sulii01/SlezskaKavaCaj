@@ -28,6 +28,16 @@ Statický, rychlý web bez závislostí (HTML + CSS + JavaScript) připravený p
 
 ---
 
+### Výdejní místo Zásilkovny a PPL
+Provozovna v Bystřici 5 je výdejní místo Zásilkovny a PPL. Na webu je to teď vidět na několika místech:
+- samostatná stránka **Výdejní místo** (`#/vydejni-misto`) s postupem pro Zásilkovnu i PPL, adresou a mapou,
+- sekce na úvodní stránce, odkaz v horní liště, v menu, v patičce a na stránce Kontakty,
+- zmínka u každého produktu a u osobního odběru v pokladně.
+
+U otevírací doby web zatím odkazuje na aplikace dopravců. Pošlete mi skutečné hodiny a doplním je. Ve variantě A se to v Shoptetu udělá jako obsahová stránka v menu a banner na úvodní stránce.
+
+---
+
 ## 2. Co jsem našel na současném webu (stojí za opravu i teď)
 
 1. **Obchodní podmínky obsahují nevyplněná místa `[BUDE DOPLNĚNO]`**: chybí splatnost u převodu, název a podmínky platební brány a splatnost u karty. To je právně citlivé, doporučuji doplnit hned.

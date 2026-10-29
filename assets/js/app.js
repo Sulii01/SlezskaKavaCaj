@@ -10,7 +10,7 @@
   const SHOP = {
     freeShippingFrom: 1500,
     shipping: [
-      { id: 'osobni', name: 'Osobní odběr – Bystřice', note: 'Provozovna Bystřice 5, 739 95 · zdarma', price: 0 },
+      { id: 'osobni', name: 'Osobní odběr – Bystřice', note: 'Provozovna Bystřice 5, 739 95 · zdarma · zde je i výdejní místo Zásilkovny a PPL', price: 0 },
       { id: 'zasilkovna', name: 'Zásilkovna – výdejní místo', note: 'Výdejní místa a Z-BOXy po ČR a SK', price: 79, point: true },
       { id: 'ppl-shop', name: 'PPL Parcelshop', note: 'Výdejní místa PPL', price: 89, point: true },
       { id: 'zasilkovna-adresa', name: 'Zásilkovna – na adresu', note: 'Doručení domů', price: 109 },
@@ -96,6 +96,8 @@
     info: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>',
     cup: '<svg viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3c-.8 1.2.8 2.3 0 3.5M12 3c-.8 1.2.8 2.3 0 3.5"/></svg>',
     leaf: '<svg viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path d="M5 19 13 11"/></svg>',
+    box: '<svg viewBox="0 0 24 24"><path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5v-9Z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9M7.8 5.2l8.5 4.6"/></svg>',
+    clock: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
     left: '<svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>',
     right: '<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>',
   };
@@ -365,7 +367,7 @@
       <div class="usp"><span class="usp__ic">${ICON.bean}</span><div><b>Čerstvě pražená</b><span>Káva z celého světa</span></div></div>
       <div class="usp"><span class="usp__ic">${ICON.grind}</span><div><b>Mletí na míru</b><span>Od zrnkové po džezvu</span></div></div>
       <div class="usp"><span class="usp__ic">${ICON.truck}</span><div><b>Zásilkovna a PPL</b><span>Doručení po ČR a SK</span></div></div>
-      <div class="usp"><span class="usp__ic">${ICON.pin}</span><div><b>Osobní odběr</b><span>Provozovna v Bystřici</span></div></div>
+      <a class="usp" href="#/vydejni-misto"><span class="usp__ic">${ICON.pin}</span><div><b>Výdejní místo</b><span>Zásilkovna a PPL v Bystřici</span></div></a>
     </div>
 
     <section class="section">
@@ -464,7 +466,7 @@
           <picture><source media="(max-width: 860px)" srcset="assets/img/brand/akce-kava-m.webp"><img class="promo__img" src="assets/img/brand/akce-kava.webp" alt="" loading="lazy"></picture>
           <div class="promo__body">
             <span class="eyebrow eyebrow--light">Dobrá zpráva – zlevněná káva</span>
-            <h2>Ethiopia Djimmah <em>1 + 1 kg</em></h2>
+            <h2>Ethiopia Djimmah <em style="white-space:nowrap">1 + 1 kg</em></h2>
             <p>${esc(promo.short)} Vychutnejte si vybrané kávy nyní za akční ceny.</p>
             <div class="promo__price">${kc(promo.price)} <small>za 2 kg kávy</small></div>
             <div><button class="btn btn--caramel" data-add="${promo.slug}">${ICON.bag} Přidat do košíku</button>
@@ -473,6 +475,8 @@
         </div>
       </div>
     </section>` : ''}
+
+    ${pickupSection()}
 
     <section class="section section--leaf">
       <div class="wrap tea">
@@ -637,7 +641,7 @@
           <div class="perks">
             <div>${ICON.bean} Čerstvě pražená a balená pro vaši objednávku</div>
             <div>${ICON.truck} Zásilkovna, PPL – doručení po ČR a SK</div>
-            <div>${ICON.pin} Osobní odběr na provozovně v Bystřici zdarma</div>
+            <div>${ICON.pin} Osobní odběr zdarma v Bystřici – jsme i <a href="#/vydejni-misto" style="text-decoration:underline">výdejní místo Zásilkovny a PPL</a></div>
           </div>
         </div>
       </div>
@@ -870,6 +874,7 @@
         <a class="ccard" href="tel:+420608805491"><span class="ccard__ic">${ICON.phone}</span><div><small>Telefon</small><b>+420 608 805 491</b></div></a>
         <a class="ccard" href="mailto:info@slezskakava.cz"><span class="ccard__ic">${ICON.mail}</span><div><small>E-mail</small><b>info@slezskakava.cz</b></div></a>
         <div class="ccard"><span class="ccard__ic">${ICON.pin}</span><div><small>Provozovna · osobní odběr</small><b>Bystřice 5, 739 95</b></div></div>
+        <a class="ccard" href="#/vydejni-misto"><span class="ccard__ic">${ICON.box}</span><div><small>Výdejní místo</small><b>Zásilkovna a PPL</b><p>Na provozovně si vyzvednete zásilky z jakéhokoli e-shopu.</p></div></a>
         <div class="ccard"><span class="ccard__ic">${ICON.id}</span><div><small>Provozovatel</small><b>Jana Lancová</b><p>Sídlo: Vendryně 1022, 739 94 · IČO 64147746 · DIČ CZ7453244975</p></div></div>
         <div class="map"><iframe title="Mapa – Bystřice 5" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Byst%C5%99ice%205%2C%20739%2095&output=embed"></iframe></div>
       </div>
@@ -886,13 +891,79 @@
     </div>`;
   }
 
+  /* ---------- Výdejní místo Zásilkovny a PPL ---------- */
+  const MAP = '<div class="map"><iframe title="Mapa – Bystřice 5" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Byst%C5%99ice%205%2C%20739%2095&output=embed"></iframe></div>';
+
+  function pickupSection() {
+    return `<section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="pickup reveal">
+          <div class="pickup__body">
+            <span class="eyebrow eyebrow--light">Výdejní místo v Bystřici</span>
+            <h2>Vyzvedněte si u nás zásilky <em>Zásilkovny i PPL</em></h2>
+            <p>Na naší provozovně v Bystřici 5 je výdejní místo Zásilkovny a PPL. Vyzvednout si tu můžete balíky z jakéhokoli e-shopu – a když už tu budete, přivoňte k čerstvé kávě.</p>
+            <div class="pickup__carriers"><span>${ICON.box} Zásilkovna</span><span>${ICON.box} PPL Parcelshop</span></div>
+            <a class="btn btn--caramel" href="#/vydejni-misto">Jak to funguje ${ICON.arrow}</a>
+          </div>
+          <ol class="pickup__steps">
+            <li><b>Vyberte nás jako výdejní místo</b><span>Při objednávce v libovolném e-shopu zvolte Zásilkovnu nebo PPL Parcelshop a výdejní místo Bystřice 5.</span></li>
+            <li><b>Počkejte na zprávu</b><span>Jakmile zásilka dorazí, dopravce vám pošle SMS nebo e-mail s kódem pro vyzvednutí.</span></li>
+            <li><b>Vyzvedněte si ji</b><span>Přijďte na provozovnu, nahlaste kód a zásilku vám vydáme.</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>`;
+  }
+
+  function pagePickup() {
+    const carrier = (name, sub, steps) => `<div class="box carrier reveal">
+      <span class="carrier__ic">${ICON.box}</span>
+      <h2>${name}</h2><p class="carrier__sub">${sub}</p>
+      <ol>${steps.map((x) => `<li>${x}</li>`).join('')}</ol>
+    </div>`;
+    return `
+    <header class="phead phead--dark"><div class="wrap">
+      ${crumbs([[null, 'Výdejní místo']])}
+      <h1>Výdejní místo <em>Zásilkovny a PPL</em></h1>
+      <p>Na naší provozovně v Bystřici si vyzvednete zásilky ze Zásilkovny i PPL – nejen ty od nás, ale z jakéhokoli e-shopu.</p>
+    </div></header>
+    <div class="wrap" style="padding-top:56px;padding-bottom:110px">
+      <div class="carriers">
+        ${carrier('Zásilkovna', 'Výdejní místo Zásilkovny', [
+          'V košíku libovolného e-shopu zvolte dopravu <b>Zásilkovna – výdejní místo</b>.',
+          'Na mapě vyhledejte <b>Bystřice 5, 739 95</b> a vyberte naše výdejní místo.',
+          'Až zásilka dorazí, přijde vám SMS nebo e-mail s kódem.',
+          'Přijďte na provozovnu, nahlaste kód a zásilku si vyzvedněte.',
+        ])}
+        ${carrier('PPL Parcelshop', 'Výdejní místo PPL', [
+          'V košíku libovolného e-shopu zvolte dopravu <b>PPL Parcelshop</b>.',
+          'Ve výběru výdejních míst vyhledejte <b>Bystřice 5, 739 95</b>.',
+          'Až zásilka dorazí, PPL vám pošle SMS nebo e-mail s informacemi k vyzvednutí.',
+          'Přijďte na provozovnu a zásilku si vyzvedněte.',
+        ])}
+      </div>
+      <div class="pickup-info">
+        <div class="ccards">
+          <div class="ccard"><span class="ccard__ic">${ICON.pin}</span><div><small>Adresa výdejního místa</small><b>Bystřice 5, 739 95 Bystřice</b><p>Provozovna Slezská káva a čaj</p></div></div>
+          <div class="ccard"><span class="ccard__ic">${ICON.clock}</span><div><small>Otevírací doba</small><b>Podle aplikace dopravce</b><p>Aktuální otevírací dobu výdejního místa najdete v aplikaci nebo na webu Zásilkovny a PPL.</p></div></div>
+          <a class="ccard" href="tel:+420608805491"><span class="ccard__ic">${ICON.phone}</span><div><small>Dotazy</small><b>+420 608 805 491</b></div></a>
+        </div>
+        ${MAP}
+      </div>
+      <div class="box" style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+        <div><h2 style="margin:0 0 6px">Jdete si pro balík? Vezměte si i kávu.</h2><p style="color:var(--muted)">Objednejte online s osobním odběrem a vyzvedněte vše najednou.</p></div>
+        <a class="btn btn--dark" href="#/kava">Vybrat kávu ${ICON.arrow}</a>
+      </div>
+    </div>`;
+  }
+
   function pageHowTo() {
     return `
     <header class="phead"><div class="wrap">${crumbs([[null, 'Jak nakupovat']])}<h1>Jak nakupovat</h1><p>Nákup zvládnete během pár minut. Tady je, jak to celé probíhá.</p></div></header>
     <div class="wrap" style="padding-bottom:110px">
       <ol class="steps-list" style="padding:0">
         <li><div><h3>Vyberte si kávu nebo čaj</h3><p>U kávy zvolte hmotnost balení (150 g, 250 g, 500 g nebo 1 kg) a způsob mletí. U čaje balení 50, 100 nebo 200 g. Tlačítkem „Do košíku“ zboží přidáte do košíku.</p></div></li>
-        <li><div><h3>Zvolte dopravu</h3><ul><li>Osobní odběr na provozovně v Bystřici 5, 739 95</li><li>Výdejní místa Zásilkovna a PPL Parcelshop</li><li>Doručení na adresu přes PPL CZ nebo Zásilkovnu</li></ul><p style="margin-top:8px">Doručujeme v rámci České republiky a Slovenska.</p></div></li>
+        <li><div><h3>Zvolte dopravu</h3><ul><li>Osobní odběr na provozovně v Bystřici 5, 739 95 – zde je zároveň <a href="#/vydejni-misto" style="text-decoration:underline">výdejní místo Zásilkovny a PPL</a></li><li>Výdejní místa Zásilkovna a PPL Parcelshop</li><li>Doručení na adresu přes PPL CZ nebo Zásilkovnu</li></ul><p style="margin-top:8px">Doručujeme v rámci České republiky a Slovenska.</p></div></li>
         <li><div><h3>Zvolte platbu</h3><ul><li>Bankovním převodem – údaje pošleme v potvrzení objednávky</li><li>Kartou online přes platební bránu</li><li>Dobírkou při převzetí zásilky</li><li>Hotově při osobním odběru</li></ul></div></li>
         <li><div><h3>Odešlete objednávku</h3><p>Vyplňte kontaktní údaje, potvrďte souhlas s obchodními podmínkami a klikněte na „Objednat s povinností platby“. Potvrzení vám přijde e-mailem.</p></div></li>
       </ol>
@@ -971,6 +1042,7 @@
     else if (a === 'dekujeme') { html = pageThanks(); }
     else if (a === 'o-nas') { html = pageAbout(); title = 'O nás | Slezská káva a čaj'; }
     else if (a === 'kontakt') { html = pageContact(); title = 'Kontakty | Slezská káva a čaj'; }
+    else if (a === 'vydejni-misto') { html = pagePickup(); title = 'Výdejní místo Zásilkovny a PPL v Bystřici | Slezská káva a čaj'; }
     else if (a === 'jak-nakupovat') { html = pageHowTo(); title = 'Jak nakupovat | Slezská káva a čaj'; }
     else if (a === 'blog' && b === 'jak-vybrat-kavu') { html = pageArticle(); title = 'Jak vybrat kávu | Slezská káva a čaj'; }
     else if (a === 'blog') { html = pageBlog(); title = 'Blog o kávě | Slezská káva a čaj'; }
